@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark light"><meta name="theme-color" content="#d8dcdf">
+<title>새 탭</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%230071e3'/%3E%3Ctext x='10' y='29' font-size='30' fill='%23ffffff'%3Ev%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css"><script src="app.js" defer></script><script src="calendar.js" defer></script>
+</head>
+<body>
+<div class="ambient" aria-hidden="true"></div>
+<main class="shell">
+<header class="topbar"><a class="wordmark" href="./"><span class="brand-icon">v</span> Vivaldi</a><div class="top-actions"><button id="theme-toggle" class="icon-button" aria-label="밝은 테마로 전환" title="테마 전환">◐</button></div></header>
+<section class="hero" aria-label="날짜와 시간"><p class="eyebrow"><span id="date"></span></p><div class="clock-block"><time id="clock" aria-label="현재 시간">--:--</time></div></section>
+<form class="search" action="https://www.google.com/search" method="get" role="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input name="q" type="search" aria-label="Google 검색" placeholder="Google 검색" autocomplete="off" required><button type="submit" aria-label="검색">↗</button></form>
+
+<nav class="shortcuts" aria-label="즐겨찾는 사이트">
+<a href="https://github.com"><span class="shortcut-icon glass-github" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.77-.24.77-.54v-2.08c-3.14.68-3.8-1.33-3.8-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1.01 1.73 2.65 1.23 3.29.94.1-.73.39-1.23.72-1.51-2.5-.29-5.13-1.25-5.13-5.57 0-1.23.44-2.23 1.16-3.01-.12-.29-.5-1.43.11-2.98 0 0 .95-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.14-1.45 3.08-1.15 3.08-1.15.62 1.55.23 2.69.12 2.98.72.78 1.15 1.78 1.15 3.01 0 4.33-2.64 5.28-5.15 5.56.41.36.77 1.05.77 2.1v3.07c0 .3.2.65.78.54A11.2 11.2 0 0 0 12 .8Z"/></svg></span><span>GitHub</span><span class="shortcut-arrow">↗</span></a>
+<a href="https://huggingface.co"><span class="shortcut-icon glass-huggingface" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="18" r="13" fill="#ffd763" stroke="#dba940" stroke-width=".8"/><path d="M12 16q2-3 4 0m8 0q2-3 4 0" fill="none" stroke="#61442a" stroke-width="1.8" stroke-linecap="round"/><path d="M15 21q5 8 10 0" fill="#7d4637"/><path d="M16.7 22h6.6" stroke="#fff8de" stroke-width="2"/><ellipse cx="10.8" cy="20" rx="2.3" ry="1.2" fill="#f5ad65"/><ellipse cx="29.2" cy="20" rx="2.3" ry="1.2" fill="#f5ad65"/><path d="M4 25q-2-5 1-5l4 5-2-7q1-3 3 1l3 7 5 2q4 4-1 6L7 31Zm32 0q2-5-1-5l-4 5 2-7q-1-3-3 1l-3 7-5 2q-4 4 1 6l10-3Z" fill="#ffdb72" stroke="#dba940" stroke-width=".8"/></svg></span><span>Hugging Face</span><span class="shortcut-arrow">↗</span></a>
+<a href="https://arxiv.org"><span class="shortcut-icon glass-arxiv" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m13 7 15 26M26 7 12 33" stroke="#a92f43" stroke-width="5"/><path d="m13 7 8 14M26 7 18 22" stroke="#e67a85" stroke-width="2"/></svg></span><span>arXiv</span><span class="shortcut-arrow">↗</span></a>
+<a href="https://www.notion.so/"><span class="shortcut-icon glass-notion" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="m7 7 24-2 4 5v23l-24 2-5-5Z" fill="#fafafa" stroke="#30343b" stroke-width="1.8" stroke-linejoin="round"/><path d="m7 7 5 5 23-2M12 12v23" fill="none" stroke="#30343b" stroke-width="1.4"/><path d="M16 28V16h3l9 12V15m-2 0h5m-17 1h7m-7 12h5" fill="none" stroke="#25282e" stroke-width="2.4" stroke-linejoin="round"/></svg></span><span>Notion</span><span class="shortcut-arrow">↗</span></a>
+</nav>
+<section class="calendar-panel" aria-labelledby="calendar-title">
+  <div class="calendar-heading"><h2 id="calendar-title">캘린더</h2><div class="calendar-actions"><a id="calendar-google-link" class="text-link" href="https://calendar.google.com/" target="_blank" rel="noopener noreferrer">Google Calendar ↗</a><button id="calendar-refresh" class="calendar-button" aria-label="일정 새로고침">↻</button><button id="calendar-login" class="calendar-button">Google 로그인</button><button id="calendar-settings-toggle" class="calendar-button" aria-expanded="false" aria-controls="calendar-settings">캘린더 연결</button></div></div>
+  <form id="calendar-settings" class="calendar-settings" hidden>
+    <div id="calendar-list" class="calendar-list" role="group" aria-label="표시할 캘린더"></div>
+    <label for="calendar-id">내 캘린더 또는 구독한 캘린더 추가</label>
+    <div class="calendar-input-row"><input id="calendar-name" type="text" placeholder="이름 (선택)" aria-label="캘린더 이름" maxlength="80"><input id="calendar-id" type="text" placeholder="캘린더 ID (example@gmail.com)" autocomplete="off" spellcheck="false" required maxlength="320"><button class="calendar-button" type="submit">추가</button><button id="calendar-disconnect" class="calendar-button" type="button" hidden>모두 해제</button></div>
+    <p>Google Calendar 설정에서 내 캘린더 또는 구독한 캘린더를 선택한 뒤, 캘린더 통합의 ‘캘린더 ID’를 추가하세요. 등록한 목록에서 표시할 캘린더를 체크하세요.</p>
+
+    <p id="calendar-settings-status" role="status" aria-live="polite"></p>
+  </form>
+  <div id="calendar-api-settings" class="calendar-settings" hidden>
+    <h3>캘린더 표시 설정</h3>
+    <label for="calendar-view-mode">표시 방식</label>
+    <select id="calendar-view-mode" class="calendar-credential"><option value="google">Google 캘린더 (별도 API 설정 없이 표시)</option><option value="custom">직접 그린 달력 (일정 API 연결 필요)</option></select>
+    <label for="calendar-api-key">공개 캘린더용 API 키 (선택)</label>
+    <input id="calendar-api-key" class="calendar-credential" type="password" placeholder="Google Calendar API 키" autocomplete="off" maxlength="200">
+    <label for="calendar-client-id">비공개·구독 캘린더용 OAuth 클라이언트 ID (선택)</label>
+    <input id="calendar-client-id" class="calendar-credential" type="text" placeholder="…apps.googleusercontent.com" autocomplete="off" maxlength="300">
+    <div class="calendar-api-actions"><button id="calendar-save-api" class="calendar-button">연결 설정 저장</button><button id="calendar-import" class="calendar-button" disabled>구독 목록 가져오기</button><button id="calendar-logout" class="calendar-button" hidden>로그인 연결 종료</button></div>
+    <p id="calendar-auth-help">공개 캘린더는 API 키로, 비공개 일정은 Google 로그인으로 읽습니다.</p>
+    <p>Google Cloud에서 Calendar API를 활성화하고 키 또는 웹용 OAuth 클라이언트 ID를 생성하세요. 클라이언트 보안 비밀은 입력하지 않습니다.</p>
+    <p id="calendar-auth-status" role="status" aria-live="polite"></p>
+  </div>
+  <div id="calendar-custom-view" class="calendar-layout" hidden><div id="calendar-preview"><div class="calendar-monthbar"><h3 id="calendar-month" aria-live="polite"></h3><div><button id="calendar-prev" class="calendar-button" aria-label="이전 달">‹</button><button id="calendar-today" class="calendar-button">오늘</button><button id="calendar-next" class="calendar-button" aria-label="다음 달">›</button></div></div><div class="calendar-weekdays" aria-hidden="true"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div><div id="calendar-days" class="calendar-days" role="group" aria-label="월간 달력"></div></div>
+  <aside class="calendar-agenda" aria-labelledby="calendar-agenda-title"><h3 id="calendar-agenda-title">선택한 날짜</h3><div id="calendar-agenda-list"></div></aside></div>
+  <div id="calendar-google-fallback" class="calendar-google-fallback" hidden>
+    <p class="calendar-fallback-note">Google 캘린더 · 서울 시간 · 월요일 시작</p>
+    <div class="calendar-fallback-frame"><iframe id="calendar-google-frame" title="Google 캘린더 일정" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  </div>
+  <p id="calendar-status" class="calendar-note" role="status" aria-live="polite">일정 데이터를 연결하려면 연결 설정을 열어 주세요.</p>
+</section>
+
+<section class="research" aria-labelledby="papers-title"><div class="section-heading"><div><h2 id="papers-title">추천 논문 <span class="hf-badge">🤗 Hugging Face</span></h2></div><a class="text-link" href="https://huggingface.co/papers">전체 논문 ↗</a></div>
+<div class="research-toolbar"><div class="filters" role="group" aria-label="논문 관심 분야"><button class="filter active" data-topic="all" aria-pressed="true">추천</button><button class="filter" data-topic="llm" aria-pressed="false">언어 모델</button><button class="filter" data-topic="vision" aria-pressed="false">비전</button><button class="filter" data-topic="agents" aria-pressed="false">에이전트</button><button class="filter" data-topic="robotics" aria-pressed="false">로보틱스</button></div><button id="refresh" class="refresh" aria-label="논문 새로고침">↻ <span>새로고침</span></button></div>
+<p id="feed-status" class="feed-status" role="status" aria-live="polite">오늘의 논문을 가져오고 있어요.</p><div id="papers" class="paper-grid" aria-busy="true"></div>
+<div id="feed-error" class="feed-error" hidden><span class="error-icon">↗</span><h3>논문을 불러오지 못했습니다.</h3><p>조금 뒤 새로고침하거나 Hugging Face에서 직접 둘러보세요.</p><a class="text-link" href="https://huggingface.co/papers">Daily Papers 열기 ↗</a></div>
+<p class="feed-note">Daily Papers의 추천 수를 기준으로 정렬하며, 관심 분야를 선택하면 제목·초록의 관련 키워드로 골라드려요.</p></section>
+</main>
+</body></html>
