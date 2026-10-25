@@ -1,3 +1,22 @@
+/* Compact folders use native details/summary for pointer and keyboard access. */
+.shortcuts.shortcut-folders { grid-template-columns:repeat(3,minmax(0,1fr)); align-items:start; }
+.shortcut-folder { min-width:0; border:1px solid var(--line); border-radius:24px; background:var(--glass-glint),var(--surface); box-shadow:var(--glass-edge),var(--glass-lift); }
+.shortcut-folder summary { display:flex; align-items:center; gap:14px; padding:18px 20px; cursor:pointer; list-style:none; border-radius:24px; }
+.shortcut-folder summary::-webkit-details-marker { display:none; }
+.shortcut-folder summary:hover { background:var(--raised); }
+.folder-icon { width:40px; height:40px; color:var(--accent); flex-shrink:0; }
+.folder-icon svg { width:100%; height:100%; }
+.folder-label { font-size:14px; font-weight:600; }
+.folder-label small { display:block; margin-top:5px; color:var(--muted); font-size:11px; font-weight:400; }
+.folder-chevron { margin-left:auto; color:var(--muted); }
+.shortcut-folder[open] { grid-column:1/-1; }
+.shortcut-folder[open] .folder-chevron { transform:rotate(180deg); }
+.folder-links { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; padding:0 16px 16px; }
+.folder-links > a { display:flex; align-items:center; gap:10px; padding:12px; border-radius:16px; background:var(--raised); min-width:0; font-size:12px; }
+.folder-links > a:hover { background:var(--selection); }
+.folder-links > a > span:nth-child(2) { overflow-wrap:anywhere; }
+@media (max-width:800px) { .folder-links { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:520px) { .shortcuts.shortcut-folders { grid-template-columns:1fr; }.shortcut-folder summary { padding:14px 16px; }.folder-links { padding:0 10px 10px; gap:8px; }.folder-links > a { padding:10px; gap:7px; font-size:11px; }.folder-links .shortcut-arrow { display:none; } }
 /* Quiet neutral glass; color is reserved for focus and calendar categories. */
 :root {
   color-scheme:dark; --bg:#22252a; --surface:rgb(225 233 243 / 5%); --raised:rgb(230 238 250 / 8%);
