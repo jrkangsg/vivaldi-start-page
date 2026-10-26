@@ -64,7 +64,8 @@ body { padding-bottom:32px; }
 .shortcut-icon { background:transparent; }
 .paper-card { border-radius:28px; padding:25px; }
 .topbar { border-bottom-color:var(--line); }
-.brand-icon { background:var(--selection); box-shadow:var(--glass-edge),0 3px 8px rgb(0 0 0 / 12%); }
+.brand-icon { flex:0 0 29px; line-height:1; letter-spacing:0; background:var(--selection); box-shadow:var(--glass-edge),0 3px 8px rgb(0 0 0 / 12%); }
+.brand-icon svg { display:block; width:23px; height:23px; }
 .filters { gap:0; padding:4px; border:1px solid var(--line); border-radius:999px; background:var(--surface); box-shadow:var(--glass-edge),0 6px 12px rgb(0 0 0 / 10%); }
 .filter { border:0; border-radius:999px; padding:9px 15px; }
 .filter.active { box-shadow:var(--glass-edge),0 3px 7px rgb(0 0 0 / 12%); }
