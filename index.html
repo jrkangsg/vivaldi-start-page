@@ -4,12 +4,12 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark light"><meta name="theme-color" content="#d8dcdf">
 <title>새 탭</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20rx%3D%2212%22%20fill%3D%22%230071e3%22%2F%3E%3Cpath%20d%3D%22m12%2012%208%2016%208-16%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E">
-<link rel="stylesheet" href="style.css"><script src="app.js" defer></script><script src="calendar.js" defer></script>
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="themes.css"><script src="app.js" defer></script><script src="calendar.js" defer></script>
 </head>
 <body>
 <div class="ambient" aria-hidden="true"></div>
 <main class="shell">
-<header class="topbar"><a class="wordmark" href="./"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m6 6 6 12 6-12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Vivaldi</a><div class="top-actions"><button id="theme-toggle" class="icon-button" aria-label="밝은 테마로 전환" title="테마 전환">◐</button></div></header>
+<header class="topbar"><a class="wordmark" href="./"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m6 6 6 12 6-12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Vivaldi</a><div class="top-actions"><select id="design-select" class="design-select" aria-label="홈화면 테마"><option value="minimal">1 · 미니멀</option><option value="orange">6 · 오렌지</option><option value="spaceship">7 · 테크</option><option value="glass">기존 유리 테마</option></select><button id="theme-toggle" class="icon-button" aria-label="밝은 테마로 전환" title="테마 전환">◐</button></div></header>
 <section class="hero" aria-label="날짜와 시간"><p class="eyebrow"><span id="date"></span></p><div class="clock-block"><time id="clock" aria-label="현재 시간">--:--</time></div></section>
 <form class="search" action="https://www.google.com/search" method="get" role="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input name="q" type="search" aria-label="Google 검색" placeholder="Google 검색" autocomplete="off" required><button type="submit" aria-label="검색">↗</button></form>
 

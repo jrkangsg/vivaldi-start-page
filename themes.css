@@ -1,0 +1,34 @@
+/* Three matching browser/home design themes. */
+:root[data-design="minimal"] { color-scheme:light; --bg:#f4f5f6; --surface:#ffffff; --raised:#e9ecef; --text:#252a30; --muted:#606975; --line:#d7d8d7; --accent:#496782; --accent-ink:#252a30; --glow:#496782; --selection:#e2eaf1; --glass-edge:none; --glass-lift:none; --glass-glint:linear-gradient(transparent,transparent); }
+:root[data-design="minimal"] .ambient { background:#f4f5f6; }
+:root[data-design="minimal"] :is(.search,.paper-card,.shortcut-folder,.calendar-panel,.calendar-settings,.folder-links > a) { border-radius:12px; box-shadow:none; backdrop-filter:none; }
+:root[data-design="minimal"] :is(.search,.paper-card,.calendar-panel)::before { display:none; }
+:root[data-design="minimal"] .shortcut-icon { background:#e9ecef; box-shadow:none; border-radius:10px; }
+:root[data-design="minimal"] .shortcut-icon::before, :root[data-design="minimal"] .shortcut-icon::after { display:none; }
+:root[data-design="minimal"] .paper-card:hover { border-color:#496782; background:#e9ecef; }
+:root[data-design="minimal"] .search:focus-within { box-shadow:0 0 0 2px #e2eaf1; background:#ffffff; }
+:root[data-design="minimal"] .shortcut-folder[aria-expanded="true"] { background:#e2eaf1; }
+:root[data-design="orange"] { color-scheme:light; --bg:#f5f0e8; --surface:#fffaf3; --raised:#eae1d5; --text:#302b27; --muted:#706457; --line:#ddd0c0; --accent:#b5481d; --accent-ink:#302b27; --glow:#b5481d; --selection:#f6dfcc; --glass-edge:none; --glass-lift:none; --glass-glint:linear-gradient(transparent,transparent); }
+:root[data-design="orange"] .ambient { background:#f5f0e8; }
+:root[data-design="orange"] :is(.search,.paper-card,.shortcut-folder,.calendar-panel,.calendar-settings,.folder-links > a) { border-radius:16px; box-shadow:none; backdrop-filter:none; }
+:root[data-design="orange"] :is(.search,.paper-card,.calendar-panel)::before { display:none; }
+:root[data-design="orange"] .shortcut-icon { background:#eae1d5; box-shadow:none; border-radius:10px; }
+:root[data-design="orange"] .shortcut-icon::before, :root[data-design="orange"] .shortcut-icon::after { display:none; }
+:root[data-design="orange"] .paper-card:hover { border-color:#b5481d; background:#eae1d5; }
+:root[data-design="orange"] .search:focus-within { box-shadow:0 0 0 2px #f6dfcc; background:#fffaf3; }
+:root[data-design="orange"] .shortcut-folder[aria-expanded="true"] { background:#f6dfcc; }
+:root[data-design="spaceship"] { color-scheme:dark; --bg:#121b23; --surface:#192630; --raised:#213440; --text:#e3eef2; --muted:#9eb5c0; --line:#36505e; --accent:#65d7c5; --accent-ink:#e3eef2; --glow:#65d7c5; --selection:#23453f; --glass-edge:none; --glass-lift:none; --glass-glint:linear-gradient(transparent,transparent); }
+:root[data-design="spaceship"] .ambient { background:#121b23; }
+:root[data-design="spaceship"] :is(.search,.paper-card,.shortcut-folder,.calendar-panel,.calendar-settings,.folder-links > a) { border-radius:6px; box-shadow:none; backdrop-filter:none; }
+:root[data-design="spaceship"] :is(.search,.paper-card,.calendar-panel)::before { display:none; }
+:root[data-design="spaceship"] .shortcut-icon { background:#213440; box-shadow:none; border-radius:10px; }
+:root[data-design="spaceship"] .shortcut-icon::before, :root[data-design="spaceship"] .shortcut-icon::after { display:none; }
+:root[data-design="spaceship"] .paper-card:hover { border-color:#65d7c5; background:#213440; }
+:root[data-design="spaceship"] .search:focus-within { box-shadow:0 0 0 2px #23453f; background:#192630; }
+:root[data-design="spaceship"] .shortcut-folder[aria-expanded="true"] { background:#23453f; }
+
+:root[data-design="spaceship"] :is(.eyebrow,.paper-category,.paper-date,.calendar-monthbar,.folder-label small) { font-family:ui-monospace,Consolas,monospace; letter-spacing:.04em; }
+:root[data-design="spaceship"] .topbar { border-bottom-color:var(--accent); }
+:root[data-design="orange"] .brand-icon { background:var(--accent); color:#fff; }
+.design-select { max-width:160px; padding:8px 10px; font:inherit; font-size:12px; color:var(--text); border:1px solid var(--line); border-radius:8px; background:var(--surface); }
+@media(max-width:520px) { .top-actions { gap:10px; }.design-select { max-width:130px; } }

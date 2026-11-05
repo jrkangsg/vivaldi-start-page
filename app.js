@@ -74,6 +74,20 @@ function setTheme(theme) {
 }
 const savedTheme = storage.get('start-neutral-glass-theme');
 setTheme(['dark', 'light'].includes(savedTheme) ? savedTheme : 'light');
+const designSelect = $('#design-select');
+const designs = ['minimal', 'orange', 'spaceship'];
+function setDesign(design) {
+  document.documentElement.dataset.design = design;
+  designSelect.value = design;
+  storage.set('start-design', design);
+  $('#theme-toggle').hidden = design !== 'glass';
+  document.querySelector('meta[name="theme-color"]').content = {
+    minimal: '#f4f5f6', orange: '#f5f0e8', spaceship: '#121b23', glass: '#d8dcdf',
+  }[design];
+}
+const savedDesign = storage.get('start-design');
+setDesign([...designs, 'glass'].includes(savedDesign) ? savedDesign : 'minimal');
+designSelect.addEventListener('change', () => setDesign(designSelect.value));
 $('#theme-toggle').addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
 function updateClock() {
   const now = new Date();
