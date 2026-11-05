@@ -19,6 +19,23 @@ let loading = false;
 const cacheKey = 'start-papers-v1';
 const cacheTTL = 30 * 60 * 1000;
 
+const folderButtons = [...document.querySelectorAll('button.shortcut-folder')];
+function selectFolder(selected) {
+  folderButtons.forEach(button => {
+    const expanded = button === selected;
+    button.setAttribute('aria-expanded', String(expanded));
+    document.getElementById(button.getAttribute('aria-controls')).hidden = !expanded;
+  });
+}
+folderButtons.forEach(button => button.addEventListener('click', () => {
+  selectFolder(button.getAttribute('aria-expanded') === 'true' ? null : button);
+}));
+document.querySelector('.shortcut-folders').addEventListener('keydown', event => {
+  if (event.key !== 'Escape') return;
+  const active = folderButtons.find(button => button.getAttribute('aria-expanded') === 'true');
+  if (active) { selectFolder(null); active.focus(); }
+});
+
 function setTheme(theme) {
   document.documentElement.dataset.theme = theme;
   $('#theme-toggle').setAttribute('aria-label', theme === 'dark' ? '밝은 테마로 전환' : '어두운 테마로 전환');
