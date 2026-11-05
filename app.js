@@ -20,12 +20,43 @@ const cacheKey = 'start-papers-v1';
 const cacheTTL = 30 * 60 * 1000;
 
 const folderButtons = [...document.querySelectorAll('button.shortcut-folder')];
-function selectFolder(selected) {
+const folderNav = document.querySelector('.shortcut-folders');
+const folderMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let folderRevision = 0;
+let folderResize;
+let folderFade;
+async function selectFolder(selected) {
+  const revision = ++folderRevision;
   folderButtons.forEach(button => {
-    const expanded = button === selected;
-    button.setAttribute('aria-expanded', String(expanded));
-    document.getElementById(button.getAttribute('aria-controls')).hidden = !expanded;
+    button.setAttribute('aria-expanded', String(button === selected));
   });
+  folderFade?.cancel();
+  const outgoing = folderNav.querySelector('.folder-links:not([hidden])');
+  const incoming = selected && document.getElementById(selected.getAttribute('aria-controls'));
+  const animate = !folderMotion.matches && typeof folderNav.animate === 'function';
+  if (animate && outgoing && outgoing !== incoming) {
+    folderFade = outgoing.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 100, fill: 'forwards' });
+    await folderFade.finished.catch(() => {});
+    if (revision !== folderRevision) return;
+  }
+  const previousHeight = folderNav.getBoundingClientRect().height;
+  folderResize?.cancel();
+  folderFade?.cancel();
+  folderNav.querySelectorAll('.folder-links').forEach(panel => {
+    panel.hidden = panel !== incoming;
+  });
+  const nextHeight = folderNav.getBoundingClientRect().height;
+  if (!animate) return;
+  folderResize = folderNav.animate([
+    { height: `${previousHeight}px`, overflow: 'clip' },
+    { height: `${nextHeight}px`, overflow: 'clip' },
+  ], { duration: 280, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+  if (incoming) {
+    folderFade = incoming.animate([
+      { opacity: 0, transform: 'translateY(-6px)' },
+      { opacity: 1, transform: 'translateY(0)' },
+    ], { duration: 240, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+  }
 }
 folderButtons.forEach(button => button.addEventListener('click', () => {
   selectFolder(button.getAttribute('aria-expanded') === 'true' ? null : button);

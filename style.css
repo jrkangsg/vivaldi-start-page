@@ -8,9 +8,12 @@
 .folder-icon svg { width:100%; height:100%; }
 .folder-label { font-size:14px; font-weight:600; }
 .folder-label small { display:block; margin-top:5px; color:var(--muted); font-size:11px; font-weight:400; }
-.folder-chevron { margin-left:auto; color:var(--muted); }
+.folder-chevron { margin-left:auto; color:var(--muted); transition:transform .24s cubic-bezier(.22,1,.36,1); }
 .shortcut-folder { text-align:left; color:inherit; font:inherit; }
 .shortcut-folder[aria-expanded="true"] .folder-chevron { transform:rotate(180deg); }
+.shortcut-folder { transition:background .2s, border-color .2s, box-shadow .2s; }
+.shortcut-folder[aria-expanded="true"] { border-color:var(--accent); }
+@media (prefers-reduced-motion:reduce) { .shortcut-folder, .folder-chevron { transition:none; } }
 .folder-links { grid-column:1/-1; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; padding:0 16px 16px; }
 .folder-links > a { display:flex; align-items:center; gap:10px; padding:12px; border-radius:16px; background:var(--raised); min-width:0; font-size:12px; }
 .folder-links > a:hover { background:var(--selection); }
